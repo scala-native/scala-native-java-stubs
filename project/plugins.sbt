@@ -4,3 +4,4 @@ val StagingRepoNames = StagingRepoIds.map(id => s"orgscala-native-$id").toSeq
 resolvers ++= StagingRepoNames.flatMap(Resolver.sonatypeOssRepos(_))
 
 addSbtPlugin("org.scala-native" % "sbt-scala-native" % "0.5.0")
+addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.2.0")

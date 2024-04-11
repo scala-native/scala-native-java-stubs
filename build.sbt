@@ -12,6 +12,8 @@ inThisBuild(
     resolvers ++= StagingRepoNames.flatMap(Resolver.sonatypeOssRepos(_))
   )
 )
+// Don't publish artifacts in the root project
+publish / skip := true
 
 lazy val javaNetUrl = project
   .withId("java-net-url-stubs")

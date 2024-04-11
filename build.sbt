@@ -14,19 +14,19 @@ inThisBuild(
 )
 
 lazy val javaNetUrl = project
-  .withId("java-net-url")
+  .withId("java-net-url-stubs")
   .in(file("java-net-url"))
   .enablePlugins(ScalaNativePlugin, ScalaNativeJUnitPlugin)
   .settings(withTestUtils)
 
 lazy val javaSecurity = project
   .in(file("java-security"))
-  .withId("java-security")
+  .withId("java-security-stubs")
   .enablePlugins(ScalaNativePlugin, ScalaNativeJUnitPlugin)
   .settings(withTestUtils)
 
 lazy val javaxSecurity = project
-  .withId("javax-security")
+  .withId("javax-security-stubs")
   .in(file("javax-security"))
   .enablePlugins(ScalaNativePlugin)
 

@@ -3,9 +3,9 @@ Scala Native implementation of Java stdlib components removed from the core Scal
 ## Usage: 
 
 ```scala
-  libraryDependencies += "org.scala-native" %%% "java-net-url" % "1.0.0"
-  libraryDependencies += "org.scala-native" %%% "java-security" % "1.0.0"
-  libraryDependencies += "org.scala-native" %%% "javax-security" % "1.0.0"
+  libraryDependencies += "org.scala-native" %%% "java-net-url-stubs" % "1.0.0"
+  libraryDependencies += "org.scala-native" %%% "java-security-stubs" % "1.0.0"
+  libraryDependencies += "org.scala-native" %%% "javax-security-stubs" % "1.0.0"
 ```
 
 ## Modules

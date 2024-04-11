@@ -1,11 +1,15 @@
+// Update during release procedure to provide access to staged, but not published artifacts
+val StagingRepoIds = 1147 to 1149
+val StagingRepoNames = StagingRepoIds.map(id => s"orgscala-native-$id").toSeq
+
 inThisBuild(
   Def.settings(
     version := "1.0.0",
     scalaVersion := "3.1.3",
-    crossScalaVersions := Seq("2.12.16", "2.13.8", "3.1.3"),
+    crossScalaVersions := Seq("2.12.18", "2.13.13", "3.1.3"),
     publishSettings,
-    
-    versionScheme := Some("semver-spec")
+    versionScheme := Some("semver-spec"),
+    resolvers ++= StagingRepoNames.flatMap(Resolver.sonatypeOssRepos(_))
   )
 )
 
@@ -40,7 +44,7 @@ def publishSettings = Def.settings(
   organization := "org.scala-native",
   // name := id,
   homepage := Some(url("https://www.scala-native.org")),
-  startYear := Some(2022),
+  startYear := Some(2024),
   licenses := Seq(
     "BSD-like" -> url("https://www.scala-lang.org/downloads/license.html")
   ),
@@ -72,10 +76,13 @@ def publishSettings = Def.settings(
   },
   credentials ++= {
     for {
-      realm <- sys.env.get("MAVEN_REALM")
-      domain <- sys.env.get("MAVEN_DOMAIN")
       user <- sys.env.get("MAVEN_USER")
       password <- sys.env.get("MAVEN_PASSWORD")
-    } yield Credentials(realm, domain, user, password)
+    } yield Credentials(
+      realm = "Sonatype Nexus Repository Manager",
+      host = "oss.sonatype.org",
+      userName = user,
+      passwd = password
+    )
   }.toSeq
 )

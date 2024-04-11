@@ -34,7 +34,10 @@ lazy val javaxSecurity = project
 lazy val testUtils = project
   .in(file("test-utils"))
   .enablePlugins(ScalaNativePlugin, ScalaNativeJUnitPlugin)
-  .settings(Compile / publishArtifact := false)
+  .settings(
+    Compile / publishArtifact := false,
+    publish / skip := true
+  )
 
 def withTestUtils = Def.settings(
   Test / unmanagedSourceDirectories += (testUtils / sourceDirectory).value
